@@ -5,17 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@CanNotExistsTaxIdNumber // Global validation
 public class EmployeeIntDto {
+
+    @Valid
+    private Integer id;
 
     @NotEmpty
     @Size(min = 1, max = 13)
-    @CanNotExistsTaxIdNumber
     private String taxIdNumber;
 
     @NotEmpty

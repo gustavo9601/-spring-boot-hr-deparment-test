@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Constraint(validatedBy = CanNotExistsTaxIdNumberValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.TYPE})
 public @interface CanNotExistsTaxIdNumber {
 
     String message() default "El TaxIdNumber ya existe";

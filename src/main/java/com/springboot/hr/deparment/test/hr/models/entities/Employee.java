@@ -1,6 +1,7 @@
 package com.springboot.hr.deparment.test.hr.models.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 public class Employee implements Serializable {
 
@@ -45,6 +47,6 @@ public class Employee implements Serializable {
     @Embedded
     private Common common = new Common();
 
-    @OneToOne(mappedBy = "employee")
+    @OneToOne(mappedBy = "employee", orphanRemoval = true)
     private Contract contract;
 }

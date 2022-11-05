@@ -24,15 +24,16 @@ public class EmployeeController {
     }
 
 
-    /**
-     * Save and Update employee response entity.
-     *
-     * @param employeeIntDto the employee int dto
-     * @return the response entity
-     */
+
     @PostMapping
     public ResponseEntity<EmployeeOutDto> saveEmployee(@Valid @RequestBody EmployeeIntDto employeeIntDto) {
-        return ResponseEntity.ok(this.employeeService.saveEmployee(employeeIntDto));
+        return ResponseEntity.ok(this.employeeService.createEmployee(employeeIntDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeOutDto> updateEmployee(@Valid @RequestBody EmployeeIntDto employeeIntDto,
+                                                         @RequestParam Integer id) {
+        return ResponseEntity.ok(this.employeeService.updateEmployee(employeeIntDto, id));
     }
 
 }

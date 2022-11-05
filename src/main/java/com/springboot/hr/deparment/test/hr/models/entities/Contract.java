@@ -3,6 +3,9 @@ package com.springboot.hr.deparment.test.hr.models.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "contracts")
+@Where(clause = "is_active = true")
 public class Contract implements Serializable {
     private static final long serialVersionUID = 1L;
 

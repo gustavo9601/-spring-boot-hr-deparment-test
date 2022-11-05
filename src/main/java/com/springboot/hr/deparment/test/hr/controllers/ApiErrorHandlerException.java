@@ -1,5 +1,6 @@
 package com.springboot.hr.deparment.test.hr.controllers;
 
+import com.springboot.hr.deparment.test.hr.exceptions.NotFoundException;
 import com.springboot.hr.deparment.test.hr.models.entities.ApiError;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,22 @@ public class ApiErrorHandlerException {
                 .build();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+    }
+
+    @ExceptionHandler({NotFoundException.class})
+    public final ResponseEntity<ApiError> notFoundException(NotFoundException exception) {
+
+        log.info("Error en notFoundException - Mensaje: {}", exception.getMessage());
+        log.info("Error en notFoundException - Clase: {}", exception.getClass());
+
+        ApiError apiError = ApiError.builder()
+                .message(exception.getMessage())
+                .description("No se encontró el recurso solicitado")
+                .code(exception.getCode())
+                .status(HttpStatus.NOT_FOUND.getReasonPhrase())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
     }
 
 }
