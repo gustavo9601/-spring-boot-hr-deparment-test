@@ -1,5 +1,7 @@
 package com.springboot.hr.deparment.test.hr.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,7 @@ public class Contract implements Serializable {
     private ContractType contractType;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 

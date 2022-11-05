@@ -13,5 +13,9 @@ public interface ContractRepository extends JpaRepository<Contract, Integer> {
 
     @Query("SELECT c FROM Contract c WHERE c.common.isActive = true AND c.employee.id = :employeeId")
     Optional<Contract> findByActiveAndEmployeeId(@Param(value = "employeeId") Integer integer);
+
+
+    @Query("SELECT c FROM Contract c WHERE c.common.isActive = true AND c.dateTo > CURRENT_DATE AND c.employee.id = :employeeId")
+    Optional<Contract> findByActiveAndEmployeeIdAndDateToAfterNow(@Param(value = "employeeId") Integer integer);
 }
 

@@ -36,4 +36,9 @@ public class EmployeeController {
         return ResponseEntity.ok(this.employeeService.updateEmployee(employeeIntDto, id));
     }
 
+    @DeleteMapping("/{id}/contracts")
+    public ResponseEntity<EmployeeOutDto> deleteEmployeeContract(@RequestParam Integer id) {
+        return ResponseEntity.ok(this.employeeService.deleteEmployeeContract(id));
+    }
+
 }

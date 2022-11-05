@@ -13,6 +13,9 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
+    @Query("SELECT e FROM Employee e WHERE e.id = :id AND e.common.isActive = true")
+    Optional<Employee> findByOnlyId(@Param(value = "id") Integer id);
+
     @Query("SELECT e FROM Employee e WHERE e.common.isActive = true")
     List<Employee> findAllEmployeesActive();
 
