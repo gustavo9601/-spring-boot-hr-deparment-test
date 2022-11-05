@@ -1,0 +1,3 @@
+INSERT INTO contract_types (name, description, is_active, created_at, updated_at) VALUES ('permanent', 'full time', true, now(), now());
+INSERT INTO contract_types (name, description, is_active, created_at, updated_at) VALUES ('fixed-term', 'full time', true, now(), now());
+INSERT INTO contract_types (name, description, is_active, created_at, updated_at) VALUES ('external', 'part time', true, now(), now());
