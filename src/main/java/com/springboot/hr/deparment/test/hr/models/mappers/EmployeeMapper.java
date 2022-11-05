@@ -1,5 +1,6 @@
 package com.springboot.hr.deparment.test.hr.models.mappers;
 
+import com.springboot.hr.deparment.test.hr.models.dtos.EmployeeIntDto;
 import com.springboot.hr.deparment.test.hr.models.dtos.EmployeeOutDto;
 import com.springboot.hr.deparment.test.hr.models.entities.Employee;
 import org.mapstruct.Mapper;
@@ -19,4 +20,6 @@ public interface EmployeeMapper {
     EmployeeOutDto mapToDto(Employee employee);
 
     List<EmployeeOutDto> mapToDto(List<Employee> employees);
+
+    Employee mapToEntity(EmployeeIntDto employeeIntDto);
 }

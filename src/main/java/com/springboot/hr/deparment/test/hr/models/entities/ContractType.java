@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
@@ -21,13 +19,12 @@ public class ContractType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @Size(max = 80)
+    @Column(name = "name", length = 80, nullable = false)
     private String name;
 
-    @Size(max = 255)
+    @Column(name = "description", length = 255)
     private String description;
 
     @Embedded
-    private Common common;
+    private Common common = new Common();
 }

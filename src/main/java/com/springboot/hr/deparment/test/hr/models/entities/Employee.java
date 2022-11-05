@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "employee")
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,35 +22,28 @@ public class Employee implements Serializable {
     private Integer id;
 
 
-    @NotNull
-    @Size(max = 13)
-    @Column(name = "tax_id_number")
+    @Column(name = "tax_id_number", length = 13, nullable = false, unique = true)
     private String taxIdNumber;
 
-    @NotNull
-    @Size(max = 60)
+
+    @Column(name = "name", length = 60, nullable = false)
     private String name;
 
-    @NotNull
-    @Size(max = 120)
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 120, nullable = false)
     private String lastName;
 
-    @NotNull
-    @Column(name = "birth_date")
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
-    @NotNull
-    @Size(max = 60)
+    @Column(name = "email", length = 60, nullable = false)
     private String email;
 
-    @NotNull
-    @Size(max = 20)
-    @Column(name = "cell_phone")
+
+    @Column(name = "cell_phone", length = 20, nullable = false)
     private String cellPhone;
 
     @Embedded
-    private Common common;
+    private Common common = new Common();
 
     @OneToOne(mappedBy = "employee")
     private Contract contract;

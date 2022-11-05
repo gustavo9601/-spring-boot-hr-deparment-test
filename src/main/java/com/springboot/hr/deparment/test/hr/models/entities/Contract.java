@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -29,19 +28,15 @@ public class Contract implements Serializable {
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
-
-    @NotNull
-    @Column(name = "date_from")
+    @Column(name = "date_from", nullable = false)
     private LocalDate dateFrom;
 
-
-    @NotNull
-    @Column(name = "date_to")
+    @Column(name = "date_to", nullable = false)
     private LocalDate dateTo;
 
-    @NotNull
+    @Column(name = "salary_per_day", nullable = false)
     private Double salaryPerDay;
 
     @Embedded
-    private Common common;
+    private Common common = new Common();
 }
